@@ -1,75 +1,236 @@
-# React + TypeScript + Vite
+# Dynamic Filter Component System
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A reusable, configuration-driven filtering system built with **React**, **TypeScript**, **Vite**, and **Material UI**. The application demonstrates a scalable frontend architecture where the same filter builder can be reused across different data tables simply by changing the configuration.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+## Live Demo
 
-## React Compiler
+> Add deployed link here
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+---
 
-## Expanding the ESLint configuration
+## Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Dynamic Filter Builder
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Add multiple filter conditions
+- Remove individual filters
+- Clear all filters
+- Dynamic field selection
+- Dynamic operator selection based on field type
+- Dynamic input rendering
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Supported Field Types
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- Text
+- Number
+- Currency
+- Date
+- Single Select
+- Multi Select
+- Boolean
 
+### Supported Operators
+
+#### Text
+
+- Equals
+- Contains
+- Starts With
+- Ends With
+- Does Not Contain
+
+#### Number
+
+- Equals
+- Greater Than
+- Greater Than or Equal
+- Less Than
+- Less Than or Equal
+
+#### Currency
+
+- Between
+
+#### Date
+
+- Between
+
+#### Single Select
+
+- Is
+- Is Not
+
+#### Multi Select
+
+- In
+- Not In
+
+#### Boolean
+
+- Is
+
+---
+
+## Employee Table
+
+- Material UI DataGrid
+- Sorting
+- Pagination
+- Record Count
+- CSV Export
+- Responsive Layout
+
+---
+
+## Filtering Logic
+
+The filtering system is completely configuration driven.
+
+Instead of hardcoding employee fields inside components, every filter is generated using configuration objects.
+
+This makes the component reusable for different tables such as:
+
+- Employees
+- Transactions
+- Users
+- Reimbursements
+
+without modifying the internal implementation.
+
+### Filtering Rules
+
+- AND between different fields
+- OR within the same field
+- Case-insensitive text search
+- Nested object filtering
+- Multi-select array filtering
+- Date range filtering
+- Currency range filtering
+
+---
+
+## Project Structure
+
+```text
+src/
+│
+├── components/
+│   ├── DataTable/
+│   └── FilterBuilder/
+│
+├── config/
+│
+├── hooks/
+│
+├── mock/
+│
+├── pages/
+│
+├── services/
+│
+├── types/
+│
+├── utils/
+│
+├── App.tsx
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## Tech Stack
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+- React
+- TypeScript
+- Vite
+- Material UI
+- MUI DataGrid
+- Lucide React
+
+---
+
+## Architecture
+
+The project follows a modular architecture.
 
 ```
+Employee Data
+        │
+        ▼
+Filter Configuration
+        │
+        ▼
+Dynamic Filter Builder
+        │
+        ▼
+Filtering Engine
+        │
+        ▼
+Filtered Dataset
+        │
+        ▼
+Material UI Data Table
+```
+
+The filtering engine is independent from the UI and can be reused with any dataset by changing the filter configuration.
+
+---
+
+## Performance Optimizations
+
+- Memoized filtering
+- Reusable components
+- Type-safe interfaces
+- Configuration-driven rendering
+- Separation of UI and filtering logic
+
+---
+
+## Installation
+
+```bash
+git clone <repository-url>
+
+cd dynamic-filter-system
+
+npm install
+
+npm run dev
+```
+
+---
+
+## Build
+
+```bash
+npm run build
+```
+
+---
+
+## Future Improvements
+
+- Server-side filtering
+- Saved filter presets
+- Advanced date operators
+- Regex search
+- Dynamic API schema generation
+
+---
+
+# AI Usage Disclosure
+
+AI was used as a development assistant during this assessment.
+
+AI assistance included:
+
+- Discussing application architecture
+- Explaining TypeScript concepts
+- Reviewing component organization
+- Suggesting performance improvements
+- Assisting with debugging
+- Improving documentation
+
+All implementation decisions, integration, testing, debugging, and final verification were completed by me. I reviewed and understood the generated suggestions before incorporating them into the project.

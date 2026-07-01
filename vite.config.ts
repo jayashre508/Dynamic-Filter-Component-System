@@ -83,8 +83,28 @@ export default defineConfig({
     exclude: ["mock-json-api"],
   },
   build: {
+    chunkSizeWarningLimit: 1000,
     rollupOptions: {
       external: [],
+      output: {
+        manualChunks(id: string) {
+          if (id.includes("node_modules")) {
+            if (id.includes("@mui")) {
+              return "vendor-mui";
+            }
+            if (id.includes("react") || id.includes("react-dom")) {
+              return "vendor-react";
+            }
+            if (id.includes("lucide-react")) {
+              return "vendor-icons";
+            }
+            if (id.includes("dayjs")) {
+              return "vendor-dayjs";
+            }
+            return "vendor";
+          }
+        },
+      },
     },
   },
 });

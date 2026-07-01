@@ -6,7 +6,7 @@ A reusable, configuration-driven filtering system built with **React**, **TypeSc
 
 ## Live Demo
 
-> Add deployed link here
+> https://dynamic-filter-component-system.netlify.app/
 
 ---
 
